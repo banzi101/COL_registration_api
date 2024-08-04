@@ -1,0 +1,129 @@
+/registration/registration-item/:
+  post:
+      tags:
+          - registration items
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Creates registration item document
+      requestBody:
+          description: Details of registration item.
+          required: true
+          content:
+              application/json:
+                  schema:
+                      type: object
+                      properties:
+                          registrationItemId:
+                              type: string
+                              example: "regItem"
+                          sectionCode:
+                              type: string
+                              example: "secCode"
+                          itemDescription:
+                              type: string
+                              example: "itemDesc"
+                          sectionType:
+                              type: string
+                              example: "secType"
+                          registrationId:
+                              type: string
+                              example: "regID"
+                          status:
+                              type: string
+                              example: "status"
+ 
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+/registration/registration-item/{registrationItemID}:
+  get:
+      tags:
+          - registration items
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Gets registration item document by registration item ID
+      
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+  put:
+      tags:
+          - registration items
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Updates registration item document by registration item ID
+      
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      requestBody:
+          description: Details of Registration item.
+          required: true
+          content:
+              application/json:
+                  schema:
+                      type: object
+                      properties:
+                          registrationItemId:
+                              type: string
+                              example: "regItem"
+                          sectionCode:
+                              type: string
+                              example: "secCode"
+                          itemDescription:
+                              type: string
+                              example: "itemDesc"
+                          sectionType:
+                              type: string
+                              example: "secType"
+                          registrationId:
+                              type: string
+                              example: "regID"
+                          status:
+                              type: string
+                              example: "status"
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+  delete:
+      tags:
+          - registration items
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Deletes registration item document by registration item ID
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response

@@ -1,0 +1,120 @@
+/registration/answers/:
+  post:
+      tags:
+          - answers
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Creates answers document
+      requestBody:
+          description: Details of Answers.
+          required: true
+          content:
+              application/json:
+                  schema:
+                      type: object
+                      properties:
+                          registrationItemId:
+                              type: string
+                              example: "regItem"
+                          isItemStartOnStage:
+                              type: number
+                              example: "1"
+                          isPropsUsed:
+                              type: number
+                              example: "0"
+                          isItemNameApplicable:
+                              type: number
+                              example: "1"
+                          notes:
+                              type: string
+                              example: "note"
+ 
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+/registration/answers/{registrationItemID}:
+  get:
+      tags:
+          - answers
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Gets answers document by registration item ID
+      
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+  put:
+      tags:
+          - answers
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Updates answers document by registration item ID
+      
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      requestBody:
+          description: Details of Answers.
+          required: true
+          content:
+              application/json:
+                  schema:
+                      type: object
+                      properties:
+                          isItemStartOnStage:
+                              type: number
+                              example: "1"
+                          isPropsUsed:
+                              type: number
+                              example: "0"
+                          isItemNameApplicable:
+                              type: number
+                              example: "1"
+                          notes:
+                              type: string
+                              example: "note"
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+  delete:
+      tags:
+          - answers
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Deletes answers document by registration item ID
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response

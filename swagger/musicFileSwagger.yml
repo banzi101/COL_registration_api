@@ -1,0 +1,123 @@
+/registration/music-file/:
+  post:
+      tags:
+          - music
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Creates music file document
+      requestBody:
+          description: Details of music file.
+          required: true
+          content:
+              application/json:
+                  schema:
+                      type: object
+                      properties:
+                          registrationItemId:
+                              type: string
+                              example: "regItem"
+                          fileName:
+                              type: string
+                              example: "fileName"
+                          filePath:
+                              type: string
+                              example: "/filePath"
+                          fileType:
+                              type: string
+                              example: ".fileType"
+                          status:
+                              type: string
+                              example: "status"
+ 
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+/registration/music-file/{registrationItemID}:
+  get:
+      tags:
+          - music
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Gets music file document by registration item ID
+      
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+  put:
+      tags:
+          - music
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Updates music file document by registration item ID
+      
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      requestBody:
+          description: Details of Registration item.
+          required: true
+          content:
+              application/json:
+                  schema:
+                      type: object
+                      properties:
+                          registrationItemId:
+                              type: string
+                              example: "regItem"
+                          fileName:
+                              type: string
+                              example: "fileName"
+                          filePath:
+                              type: string
+                              example: "/filePath"
+                          fileType:
+                              type: string
+                              example: ".fileType"
+                          status:
+                              type: string
+                              example: "status"
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+  delete:
+      tags:
+          - music
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Deletes music file document by registration item ID
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response

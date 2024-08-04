@@ -1,0 +1,143 @@
+/registration/user-registration/:
+  post:
+      tags:
+          - user registration
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Creates user registration document
+      requestBody:
+          description: Details of music file.
+          required: true
+          content:
+              application/json:
+                  schema:
+                      type: object
+                      properties:
+                          userRegistrationId:
+                              type: string
+                              example: "userRegItem"
+                          eventId:
+                              type: string
+                              example: "eventID"
+                          userId:
+                              type: string
+                              example: "userID"
+                          eventName:
+                              type: string
+                              example: "eventName"
+                          eventDescription:
+                              type: string
+                              example: "eventDesc"
+                          eventLocation:
+                              type: string
+                              example: "eventLocation"
+                          state:
+                              type: string
+                              example: "state"
+                          eventDate:
+                              type: string
+                              format: date-time
+                              example: "2017-07-21T17:32:28Z"
+ 
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+/registration/user-registration/{registrationItemID}:
+  get:
+      tags:
+          - user registration
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Gets user registration document by registration item ID
+      
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+  put:
+      tags:
+          - user registration
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Updates user registration document by registration item ID
+      
+      parameters:
+         - name: userRegistrationId
+           in: path
+           required: true
+           description: user registration ID.
+           schema:
+               type : string
+      requestBody:
+          description: Details of user registration item.
+          required: true
+          content:
+              application/json:
+                  schema:
+                      type: object
+                      properties:
+                          userRegistrationId:
+                              type: string
+                              example: "userRegItem"
+                          eventId:
+                              type: string
+                              example: "eventID"
+                          userId:
+                              type: string
+                              example: "userID"
+                          eventName:
+                              type: string
+                              example: "eventName"
+                          eventDescription:
+                              type: string
+                              example: "eventDesc"
+                          eventLocation:
+                              type: string
+                              example: "eventLocation"
+                          state:
+                              type: string
+                              example: "state"
+                          eventDate:
+                              type: string
+                              format: date-time
+                              example: "2017-07-21T17:32:28Z"
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
+ 
+  delete:
+      tags:
+          - user registration
+      security:
+          - apiKeyAuth: []
+          - bearerAuth: []
+      summary: Deletes user registration document by registration item ID
+      parameters:
+         - name: registrationItemID
+           in: path
+           required: true
+           description: registration item ID.
+           schema:
+               type : string
+      responses:
+          200:
+              description: A successful response
+          500:
+              description: An unsuccessful response
